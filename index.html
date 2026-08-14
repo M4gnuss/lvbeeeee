@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<title>🇪🇸 ESPAGNOL LVB — ECG2</title>
+<style>
+:root{
+  --bg:#faf9f7; --card:#ffffff; --ink:#1c1b19; --muted:#6b6862; --line:#e3e0da;
+  --ok:#1f7a4d; --okbg:#e8f5ee; --ko:#b3261e; --kobg:#fdeceb;
+  --warn:#a86800; --warnbg:#fdf3e0; --accent:#7a1f1f; --accentbg:#f6ecec;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px 80px}
+header{background:var(--accent);color:#fff;padding:18px 0 14px;margin-bottom:0}
+header .wrap{padding-bottom:0}
+h1{font-size:19px;margin:0 0 10px;letter-spacing:.02em}
+nav{display:flex;flex-wrap:wrap;gap:6px}
+nav button{background:rgba(255,255,255,.12);color:#fff;border:0;padding:7px 11px;border-radius:6px;
+  font-size:13px;cursor:pointer;font-family:inherit}
+nav button.on{background:#fff;color:var(--accent);font-weight:600}
+h2{font-size:16px;margin:26px 0 10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+h3{font-size:16px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin:12px 0}
+.card.tight{padding:12px 14px}
+.meta{font-size:13px;color:var(--muted)}
+.btn{background:var(--accent);color:#fff;border:0;border-radius:7px;padding:10px 16px;font-size:14px;
+  cursor:pointer;font-family:inherit;font-weight:600}
+.btn:disabled{background:#cdc9c2;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--line);font-weight:500}
+.btn.small{padding:6px 11px;font-size:13px}
+input[type=text],textarea{width:100%;padding:10px;border:1px solid #cbc7c0;border-radius:6px;
+  font:inherit;background:#fff}
+textarea{min-height:90px;resize:vertical}
+input:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.bar{height:7px;background:#e9e6e0;border-radius:4px;overflow:hidden;margin:8px 0}
+.bar i{display:block;height:100%;background:var(--accent)}
+.fb{border-radius:8px;padding:11px 13px;margin-top:10px;font-size:14.5px}
+.fb.ok{background:var(--okbg);border:1px solid #bfe0cd}
+.fb.ko{background:var(--kobg);border:1px solid #f0c9c6}
+.fb.warn{background:var(--warnbg);border:1px solid #eddcb8}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;padding:2px 6px;
+  border-radius:4px;background:#efece7;color:var(--muted);margin-right:6px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.opt{display:block;border:1px solid var(--line);border-radius:7px;padding:9px 12px;margin:6px 0;cursor:pointer;background:#fff}
+.opt:hover{border-color:var(--accent)}
+.opt.sel{border-color:var(--accent);background:var(--accentbg)}
+ul.hist{list-style:none;padding:0;margin:0}
+ul.hist li{border-bottom:1px solid var(--line);padding:11px 2px;cursor:pointer}
+ul.hist li:last-child{border-bottom:0}
+ul.hist li:hover{background:#f4f1ec}
+code{background:#f1eee9;padding:1px 5px;border-radius:4px;font-size:14px}
+.es{font-style:italic}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.hide{display:none}
+.small{font-size:13px}
+.note{font-size:13px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px;margin:10px 0}
+.kbd{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>🇪🇸 ESPAGNOL LVB — ECG2 · préparation BCE/ELVi &amp; ECRICOME 2027</h1>
+  <nav id="nav"></nav>
+</div></header>
+<div class="wrap" id="main"></div>
+
+<script>
+/* ============================================================
+   DONNÉES — les séances s'ajoutent ici, l'application ne se
+   reconstruit jamais de zéro.
+   ============================================================ */
+const SEANCES = [
+{
+ id:"s1", num:1, date:"2026-08-11", jour:"mardi 11 août 2026",
+ titre:"Diagnostic initial — grammaire, conjugaison, thème",
+ themes:"ser/estar · por/para · subjonctif · indefinido · thème (logement)",
+ immersion:{
+   pays:"Espagne", type:"📰 Article",
+   sujet:"L'accès au logement bloque l'émancipation des jeunes Espagnols (rapport CCOO, 11 août 2026).",
+   pourquoi:"Dossier ultra-polyvalent : jeunesse, inégalités, logement, travail, politiques publiques.",
+   mots:["la vivienda — le logement","el alquiler — le loyer / la location","emanciparse · independizarse — quitter le domicile familial"],
+   question:"¿Por qué la mejora del empleo no basta para que los jóvenes españoles se emancipen?",
+   url:"https://www.diariodeleon.es/economia/260811/2094022/dificil-acceso-vivienda-obstaculiza-emancipacion-juvenil-pesar-mejora-empleo.html",
+   source:"Diario de León (dépêche), 11/08/2026 — rapport de Comisiones Obreras (CCOO)"
+ },
+ ex:[
+  {id:"s1r1",etape:"RÉACTIVATION",type:"saisie",code:"CONJ",
+   consigne:"Conjugue.",prompt:"<b>tener</b> — pretérito indefinido — 3<sup>e</sup> personne du <b>pluriel</b>",
+   sol:["tuvieron"],regle:"Radical fort <code>tuv-</code> + terminaisons -e -iste -o -imos -isteis -<b>ieron</b> (jamais accentuées).",
+   anki:{r:"tener — indefinido — ellos",v:"tuvieron",t:"CONJ"}},
+  {id:"s1r2",etape:"RÉACTIVATION",type:"saisie",code:"CONJ",
+   consigne:"Conjugue.",prompt:"<b>ir</b> — imparfait du subjonctif — 3<sup>e</sup> personne du <b>singulier</b>",
+   sol:["fuera","fuese"],regle:"L'imparfait du subjonctif se forme toujours sur la 3<sup>e</sup> pers. du pluriel de l'indefinido : <i>fueron → fuera / fuese</i>. <i>ser</i> et <i>ir</i> ont les mêmes formes.",
+   anki:{r:"ir — imparfait du subjonctif — él",v:"fuera (ou fuese)",t:"CONJ"}},
+  {id:"s1r3",etape:"RÉACTIVATION",type:"saisie",code:"GRAM",
+   consigne:"Complète par la forme correcte de ser ou estar.",prompt:"La reunión ___ en Madrid.",
+   sol:["es"],regle:"Le <b>lieu d'un événement</b> se dit avec <b>ser</b> (<i>el concierto es en el estadio</i>). <i>Estar</i> ne sert qu'à localiser une chose ou une personne.",
+   anki:{r:"Le lieu d'un ÉVÉNEMENT : ser ou estar ?",v:"ser — La reunión es en Madrid.",t:"GRAM"}},
+  {id:"s1r4",etape:"RÉACTIVATION",type:"saisie",code:"GRAM",
+   consigne:"por ou para ?",prompt:"Lo hicieron ___ mejorar la situación.",
+   sol:["para"],regle:"<b>para</b> + infinitif = but, finalité. <b>por</b> = cause, motif."},
+  {id:"s1r5",etape:"RÉACTIVATION",type:"saisie",code:"GRAM",
+   consigne:"Complète avec haber au pretérito indefinido.",prompt:"El año pasado ___ muchas protestas en Barcelona.",
+   sol:["hubo"],regle:"<b>haber</b> impersonnel reste <b>toujours au singulier</b> : <i>hay, hubo, había, habrá</i> — jamais <s>hubieron muchas protestas</s>.",
+   anki:{r:"« Il y eut de nombreuses manifestations »",v:"Hubo muchas protestas (jamais *hubieron*)",t:"GRAM"}},
+  {id:"s1r6",etape:"RÉACTIVATION",type:"qcm",code:"CIV",
+   consigne:"Civilisation.",prompt:"En quelle année la Constitution espagnole actuellement en vigueur a-t-elle été adoptée ?",
+   options:["1931","1975","1978","1982"],sol:2,
+   regle:"Constitution du <b>6 décembre 1978</b>, cœur de la Transition démocratique. 1975 = mort de Franco ; 1981 = tentative de coup d'État du 23-F ; 1982 = première victoire du PSOE (Felipe González).",
+   anki:{r:"Constitution espagnole en vigueur",v:"1978 (referéndum del 6 de diciembre)",t:"CIV-ESPAGNE"}},
+
+  {id:"s1c1",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"GRAM",
+   consigne:"ser ou estar ?",prompt:"Madrid ___ la capital de España.",
+   sol:["es"],regle:"Identité, définition, caractéristique permanente → <b>ser</b>."},
+  {id:"s1c2",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"GRAM",
+   consigne:"ser ou estar ?",prompt:"Los jóvenes ___ preocupados por el precio de la vivienda.",
+   sol:["están"],regle:"<b>estar</b> + participe passé = état résultant. Attention à l'accent : <b>están</b>.",
+   anki:{r:"« Les jeunes sont inquiets »",v:"Los jóvenes están preocupados",t:"GRAM"}},
+  {id:"s1c3",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"GRAM",
+   consigne:"por ou para ?",prompt:"Muchos jóvenes no pueden independizarse ___ el precio de los alquileres.",
+   sol:["por"],regle:"<b>por</b> + nom = cause (« à cause de »). <b>para</b> = but."},
+  {id:"s1c4",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"GRAM",
+   consigne:"por ou para ?",prompt:"El Gobierno aprobó un decreto ___ limitar los alquileres turísticos.",
+   sol:["para"],regle:"Finalité → <b>para</b> + infinitif."},
+  {id:"s1c5",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"GRAM",
+   consigne:"Conjugue au temps et au mode qui conviennent.",prompt:"No creo que el Gobierno ___ (aprobar) la ley antes de octubre.",
+   sol:["apruebe"],regle:"Opinion <b>niée</b> → subjonctif. <i>Creo que aprueba</i> (indicatif) / <i>No creo que <b>apruebe</b></i>. Diphtongue o→ue à la 3<sup>e</sup> pers.",
+   anki:{r:"No creo que el Gobierno ___ (aprobar) la ley.",v:"apruebe — no creer que + subjonctif",t:"GRAM"}},
+  {id:"s1c6",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"GRAM",
+   consigne:"Conjugue.",prompt:"Es necesario que las comunidades autónomas ___ (intervenir) en el mercado del alquiler.",
+   sol:["intervengan"],regle:"Tournure impersonnelle de nécessité → subjonctif. <i>intervenir</i> suit <i>venir</i> : <b>intervengo → intervenga(n)</b>."},
+  {id:"s1c7",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"CONJ",
+   consigne:"Conjugue.",prompt:"El presidente pidió que los ayuntamientos ___ (construir) más viviendas públicas.",
+   sol:["construyeran","construyesen"],regle:"Principale à l'indefinido → subordonnée à l'<b>imparfait du subjonctif</b>. Formé sur <i>construyeron</i> → <b>construyera(n)</b> : le <i>y</i> se maintient.",
+   anki:{r:"construir — imparfait du subjonctif — ellos",v:"construyeran (← construyeron)",t:"CONJ"}},
+  {id:"s1c8",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"CONJ",
+   consigne:"Conjugue au pretérito indefinido.",prompt:"En 2025, los precios ___ (subir) más de un diez por ciento.",
+   sol:["subieron"],regle:"Indefinido régulier en -ir : 3<sup>e</sup> pers. plur. <b>-ieron</b>, sans accent écrit."},
+  {id:"s1c9",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"SYN",
+   consigne:"Complète par la préposition qui convient.",prompt:"Los vecinos se quejaron ___ la falta de vivienda asequible.",
+   sol:["de"],regle:"<b>quejarse DE algo</b>. Même famille : <i>depender de, darse cuenta de, acordarse de, convertirse en</i>.",
+   anki:{r:"se plaindre de qqch",v:"quejarse DE algo",t:"LEX"}},
+  {id:"s1c10",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"SYN",
+   consigne:"Complète (un seul mot).",prompt:"___ diez años que los alquileres no dejan de subir.",
+   sol:["hace"],regle:"Action commencée dans le passé et toujours en cours : <b>hace + durée + que + présent</b> (= « cela fait dix ans que… »). Variante : <i>desde hace diez años</i> + présent.",
+   anki:{r:"« Cela fait dix ans que les loyers augmentent »",v:"Hace diez años que los alquileres suben / …suben desde hace diez años",t:"GRAM"}},
+
+  {id:"s1t1",etape:"APPLICATION CONCOURS",type:"theme",code:"LEX",
+   consigne:"Thème — traduis en espagnol.",prompt:"Le logement est devenu le principal problème social de l'Espagne.",
+   sol:"La vivienda se ha convertido en el principal problema social de España.",
+   regle:"« devenir » → <b>convertirse EN</b> (+ nom). Le passé récent relié au présent se rend par le <i>pretérito perfecto</i> (<i>se ha convertido</i>)."},
+  {id:"s1t2",etape:"APPLICATION CONCOURS",type:"theme",code:"GRAM",
+   consigne:"Thème — traduis en espagnol.",prompt:"Beaucoup de jeunes n'arrivent pas à quitter le domicile familial, bien qu'ils aient un travail.",
+   sol:"Muchos jóvenes no consiguen independizarse, aunque tienen trabajo.",
+   regle:"« ne pas arriver à » → <b>no conseguir/lograr + infinitif</b>. « quitter le domicile familial » → <b>independizarse / emanciparse</b> (jamais <s>dejar la casa familiar</s>). <b>aunque + indicatif</b> quand le fait est réel et connu ; <i>aunque tengan</i> serait possible mais présenterait le fait comme une simple hypothèse."},
+  {id:"s1t3",etape:"APPLICATION CONCOURS",type:"theme",code:"GRAM",
+   consigne:"Thème — traduis en espagnol.",prompt:"En 2023, l'Argentine a élu un président libertarien.",
+   sol:"En 2023, Argentina eligió a un presidente libertario.",
+   regle:"Date passée et close → <b>pretérito indefinido</b> (<i>eligió</i>, pas <i>ha elegido</i>). <b>a personnel</b> devant un COD de personne. Attention : <i>libertario</i>, et <i>el presidente electo</i> = le président élu (pas encore investi)."},
+  {id:"s1t4",etape:"APPLICATION CONCOURS",type:"theme",code:"CONJ",
+   consigne:"Thème — traduis en espagnol.",prompt:"Il faudrait que le gouvernement réduise le nombre de logements touristiques.",
+   sol:"Haría falta que el Gobierno redujera el número de viviendas turísticas.",
+   regle:"Principale au <b>conditionnel</b> → subordonnée à l'<b>imparfait du subjonctif</b>. <i>reducir → redujeron → redujera</i> (radical en -j, jamais <s>reduciera</s>)."},
+  {id:"s1t5",etape:"APPLICATION CONCOURS",type:"libre",code:"METH",
+   consigne:"Production libre — 4 à 5 phrases, environ 60 mots.",
+   prompt:"¿Por qué la vivienda se ha convertido en el principal problema social de España?",
+   sol:"En España, la vivienda se ha convertido en el principal problema social porque los sueldos no han seguido el ritmo de los alquileres. Los jóvenes son los más afectados: aunque tienen trabajo, muchos no consiguen independizarse y siguen viviendo con sus padres. A ello se añade la presión del turismo, que ha reducido la oferta de vivienda en los centros urbanos. Por eso el Gobierno intenta regular los alquileres, aunque las comunidades autónomas no aplican las mismas medidas.",
+   regle:"Modèle de niveau concours : phrases <b>simples et sûres</b>, connecteurs explicites (<i>porque, a ello se añade, por eso, aunque</i>), un exemple concret, aucune tournure risquée. C'est exactement ce que valorisent les rapports de jury ELVi."}
+ ]
+},
+{
+ id:"s2", num:2, date:"2026-08-12", jour:"mercredi 12 août 2026",
+ titre:"Conjugaison + thème (Amérique latine)",
+ themes:"indefinido irrégulier · pluscuamperfecto · si + imparfait du subjonctif · thème",
+ immersion:{
+   pays:"Amérique latine", type:"📰 Article / direct",
+   sujet:"L'investiture d'Abelardo de la Espriella à la présidence de la Colombie, le 7 août 2026.",
+   pourquoi:"Cas d'école de l'alternance en Amérique latine : la Colombie, qui avait élu Gustavo Petro en 2022, bascule à droite quatre ans plus tard.",
+   mots:["la posesión · la investidura — l'investiture","el mandatario — le chef de l'État","el giro · el vuelco — le virage, le basculement"],
+   question:"¿Qué continuidades y qué rupturas anuncia el nuevo presidente respecto al Gobierno de Petro?",
+   url:"https://cnnespanol.cnn.com/2026/08/07/colombia/live-news/abelardo-espriella-posesion-investidura-presidencial-orix",
+   source:"CNN en Español, 07/08/2026"
+ },
+ ex:[
+  {id:"s2r1",etape:"RÉACTIVATION",type:"saisie",code:"CONJ",
+   consigne:"Conjugue.",prompt:"<b>hacer</b> — pretérito indefinido — 3<sup>e</sup> personne du <b>pluriel</b>",
+   sol:["hicieron"],regle:"Radical fort <code>hic-</code> ; au singulier, <b>hizo</b> (c→z devant o).",
+   anki:{r:"hacer — indefinido — ellos / él",v:"hicieron / hizo",t:"CONJ"}},
+  {id:"s2r2",etape:"RÉACTIVATION",type:"saisie",code:"CONJ",
+   consigne:"Conjugue.",prompt:"<b>ser</b> — imparfait du subjonctif — 3<sup>e</sup> personne du <b>singulier</b>",
+   sol:["fuera","fuese"],regle:"<i>fueron → fuera / fuese</i>. Formes identiques à celles de <i>ir</i> (revu le 11/08)."},
+  {id:"s2r3",etape:"RÉACTIVATION",type:"saisie",code:"ACC",
+   consigne:"Conjugue — l'accent écrit est exigé.",prompt:"Los jóvenes ___ (estar) preocupados por su futuro.",
+   sol:["están"],regle:"<b>están</b> porte un accent écrit : mot terminé par -n accentué sur la dernière syllabe. Une réponse sans accent est comptée comme fausse au concours."},
+  {id:"s2r4",etape:"RÉACTIVATION",type:"saisie",code:"GRAM",
+   consigne:"por ou para ?",prompt:"Salieron a la calle ___ protestar contra el precio de la vivienda.",
+   sol:["para"],regle:"Finalité → <b>para</b> + infinitif. Noter aussi <b>salir a la calle</b> (jamais <s>bajar a la calle</s>)."},
+  {id:"s2r5",etape:"RÉACTIVATION",type:"qcm",code:"CIV",
+   consigne:"Civilisation.",prompt:"Qui préside le Mexique depuis le 1<sup>er</sup> octobre 2024 ?",
+   options:["Andrés Manuel López Obrador","Xóchitl Gálvez","Claudia Sheinbaum","Marcelo Ebrard"],sol:2,
+   regle:"<b>Claudia Sheinbaum</b> (Morena), première femme présidente du Mexique, investie le <b>1<sup>er</sup> octobre 2024</b>, successeure d'AMLO. Utile comme <b>contre-exemple</b> au virage à droite du continent.",
+   anki:{r:"Présidente du Mexique (depuis le 01/10/2024)",v:"Claudia Sheinbaum (Morena) — 1ª presidenta de México",t:"CIV-MEXIQUE"}},
+  {id:"s2r6",etape:"RÉACTIVATION",type:"saisie",code:"LEX",
+   consigne:"Un seul verbe espagnol.",prompt:"« quitter le domicile familial », « prendre son indépendance » se dit : ___",
+   sol:["independizarse","emanciparse"],regle:"<b>independizarse</b> (ou <i>emanciparse</i>). Le calque <s>dejar la casa familiar</s> est un contresens de registre."},
+
+  {id:"s2c1",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"CONJ",
+   consigne:"Conjugue au pretérito indefinido.",prompt:"En 2025, los alquileres ___ (subir) un doce por ciento.",
+   sol:["subieron"],regle:"Indefinido régulier : <b>-ieron</b>, jamais d'accent écrit à la 3<sup>e</sup> pers. du pluriel."},
+  {id:"s2c2",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"CONJ",
+   consigne:"Conjugue au pretérito indefinido.",prompt:"Los ministros ___ (decir) que la reforma era urgente.",
+   sol:["dijeron"],regle:"Radicaux forts terminés par <b>-j</b> (<i>dij-, traj-, conduj-, produj-, reduj-</i>) : la terminaison perd le <i>i</i> → <b>dijeron</b>, jamais <s>dijieron</s>.",
+   anki:{r:"decir / traer / reducir — indefinido — ellos",v:"dijeron / trajeron / redujeron (radical en -j, pas de -i-)",t:"CONJ"}},
+  {id:"s2c3",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"CONJ",
+   consigne:"Conjugue au pluscuamperfecto (2 mots).",prompt:"Cuando llegó la policía, los manifestantes ya ___ (irse).",
+   sol:["se habían ido"],regle:"Plus-que-parfait = <b>había + participe</b>. Le pronom se place <b>devant l'auxiliaire</b> : <i>se habían ido</i>, jamais <s>habían se ido</s>."},
+  {id:"s2c4",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"GRAM",
+   consigne:"Conjugue.",prompt:"Si el Gobierno ___ (querer), podría intervenir el mercado.",
+   sol:["quisiera","quisiese"],regle:"Après <b>si</b> hypothétique, le conditionnel et le futur sont <b>interdits</b> : <i>si + imparfait du subjonctif</i> → <i>conditionnel</i> dans la principale.",
+   anki:{r:"« Si le gouvernement voulait, il pourrait… »",v:"Si el Gobierno quisiera, podría… (jamais *si querría*)",t:"GRAM"}},
+  {id:"s2c5",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"GRAM",
+   consigne:"Conjugue.",prompt:"Es imprescindible que el Estado ___ (intervenir) en el mercado del alquiler.",
+   sol:["intervenga"],regle:"Tournure impersonnelle de nécessité → subjonctif présent. <i>intervenir</i> se conjugue comme <i>venir</i> : <b>intervenga</b>."},
+
+  {id:"s2t1",etape:"APPLICATION CONCOURS",type:"theme",code:"GRAM",
+   consigne:"Thème — traduis en espagnol.",prompt:"En novembre 2025, la Bolivie a élu un président de centre droit.",
+   sol:"En noviembre de 2025, Bolivia eligió a un presidente de centroderecha.",
+   regle:"<b>en noviembre DE 2025</b> ; indefinido <i>eligió</i> ; <b>a personnel</b> ; <b>centroderecha</b> en un seul mot (de même <i>centroizquierda</i>, <i>ultraderecha</i>)."},
+  {id:"s2t2",etape:"APPLICATION CONCOURS",type:"theme",code:"CONJ",
+   consigne:"Thème — traduis en espagnol.",prompt:"Il faudrait que le gouvernement réduise les inégalités.",
+   sol:"Haría falta que el Gobierno redujera las desigualdades.",
+   regle:"Conditionnel → imparfait du subjonctif. <i>reducir → redujeron → <b>redujera</b></i>. Variante correcte : <i>Sería necesario que el Gobierno redujera…</i>"},
+  {id:"s2t3",etape:"APPLICATION CONCOURS",type:"theme",code:"SYN",
+   consigne:"Thème — traduis en espagnol.",prompt:"Les habitants se plaignent du manque de logements depuis des années.",
+   sol:"Los habitantes se quejan de la falta de viviendas desde hace años.",
+   regle:"<b>quejarse de</b> ; <b>desde hace + durée</b> avec un <b>présent</b> (l'action dure encore) — jamais un passé composé comme en français."}
+ ]
+},
+{
+ id:"s3", num:3, date:"2026-08-13", jour:"jeudi 13 août 2026",
+ titre:"Vocabulaire économie &amp; société — phrases à trous + thème",
+ themes:"lexique économique · phrases à trous · haber impersonnel · por/para · thème (inflation)",
+ retenir:[
+   "« les ménages » = <b>los hogares</b> · « le pouvoir d'achat » = <b>el poder adquisitivo</b> · « renchérir » = <b>encarecerse</b>.",
+   "<b>haber</b> impersonnel reste au singulier : <i>hubo más incendios</i>, jamais <s>hubieron</s>.",
+   "<b>de modo que</b> + indicatif = conséquence réelle ; <b>para que</b> + subjonctif = but."
+ ],
+ immersion:{
+   pays:"Espagne", type:"📰 Article",
+   sujet:"L'INE relève l'inflation espagnole de juillet à 3,6 %, son taux le plus élevé depuis deux ans (donnée définitive publiée le 13 août 2026).",
+   pourquoi:"Le pouvoir d'achat est le dossier économique le plus rentable en copie : il relie prix, salaires, énergie, logement et confiance politique.",
+   mots:["la subida de los precios — la hausse des prix","los carburantes — les carburants","la inflación subyacente — l'inflation sous-jacente"],
+   question:"¿Por qué la inflación de julio subió al 3,6 % aunque los alimentos moderaron su encarecimiento?",
+   url:"https://theobjective.com/economia/2026-08-13/ine-eleva-inflacion-julio-tasa-dos-anos/",
+   source:"The Objective, 13/08/2026 — données INE. Note officielle : ine.es, nota de prensa IPC julio 2026"
+ },
+ ex:[
+  {id:"s3r1",etape:"RÉACTIVATION",type:"saisie",code:"GRAM",
+   consigne:"Complète avec haber au pretérito indefinido.",prompt:"El verano pasado ___ más incendios que nunca en Andalucía.",
+   sol:["hubo"],regle:"<b>haber</b> impersonnel : <b>toujours au singulier</b>, quel que soit le nom qui suit — <i>hay, hubo, había, habrá</i>. Jamais <s>hubieron más incendios</s>. (Déjà travaillé le 11/08 : première réactivation J+2.)"},
+  {id:"s3r2",etape:"RÉACTIVATION",type:"saisie",code:"CONJ",
+   consigne:"Conjugue au pretérito indefinido.",prompt:"<b>traer</b> — 3<sup>e</sup> personne du <b>pluriel</b>",
+   sol:["trajeron"],regle:"Radical fort en <b>-j</b> : la terminaison perd le <i>i</i> → <b>trajeron</b>, jamais <s>trajieron</s>. Même famille : <i>dijeron, condujeron, produjeron, redujeron</i>.",
+   anki:{r:"traer / conducir — indefinido — ellos",v:"trajeron / condujeron (radical en -j, sans -i-)",t:"CONJ"}},
+  {id:"s3r3",etape:"RÉACTIVATION",type:"saisie",code:"GRAM",
+   consigne:"por ou para ?",prompt:"El Gobierno fue criticado ___ no haber previsto la subida de los precios.",
+   sol:["por"],regle:"<b>por</b> = cause, motif (« pour avoir… », « à cause de »). <b>para</b> = but. Repère utile : si le français peut se remplacer par « parce que », c'est <b>por</b>."},
+  {id:"s3r4",etape:"RÉACTIVATION",type:"saisie",code:"SYN",
+   consigne:"Complète par la préposition qui convient (un seul mot).",prompt:"El paro juvenil se ha convertido ___ un problema estructural.",
+   sol:["en"],regle:"<b>convertirse EN</b> + nom = « devenir ». À ranger avec <i>quejarse de</i>, <i>depender de</i>, <i>darse cuenta de</i> : ces prépositions régies se retiennent avec le verbe, jamais séparément."},
+  {id:"s3r5",etape:"RÉACTIVATION",type:"qcm",code:"CIV",
+   consigne:"Civilisation — Espagne contemporaine.",prompt:"Qui est président du gouvernement espagnol en août 2026 ?",
+   options:["Alberto Núñez Feijóo","Yolanda Díaz","Pedro Sánchez","Santiago Abascal"],sol:2,
+   regle:"<b>Pedro Sánchez</b> (PSOE), président du gouvernement depuis juin 2018 (motion de censure contre Rajoy), reconduit après l'investiture de <b>novembre 2023</b>. Alberto Núñez Feijóo dirige le <b>PP</b> ; Yolanda Díaz, <b>Sumar</b> ; Santiago Abascal, <b>Vox</b>. En espagnol on dit <i>el presidente del Gobierno</i> — jamais <s>el primer ministro</s>.",
+   anki:{r:"Chef du gouvernement espagnol (août 2026)",v:"Pedro Sánchez (PSOE) — el presidente del Gobierno, desde junio de 2018",t:"CIV-ESPAGNE"}},
+  {id:"s3r6",etape:"RÉACTIVATION",type:"saisie",code:"ACC",
+   consigne:"Écris le mot espagnol — l'accent écrit est exigé.",prompt:"« l'inflation » se dit : ___",
+   sol:["la inflación","inflación"],regle:"<b>la inflación</b>. Tous les noms en <b>-ción</b> portent l'accent au singulier et le <b>perdent au pluriel</b> : <i>la inflación → las inflaciones</i>, <i>la preocupación → las preocupaciones</i>. Un accent oublié est une faute au concours."},
+
+  {id:"s3c1",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"LEX",
+   consigne:"Vocabulaire — traduis l'expression (2 mots, sans article).",prompt:"« le pouvoir d'achat » se dit : ___",
+   sol:["poder adquisitivo","el poder adquisitivo"],regle:"<b>el poder adquisitivo</b> (ou, plus familier, <i>el poder de compra</i>). En copie : <i>los hogares han perdido poder adquisitivo</i>.",
+   anki:{r:"le pouvoir d'achat",v:"el poder adquisitivo",t:"LEX"}},
+  {id:"s3c2",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"LEX",
+   consigne:"Complète (un seul mot).",prompt:"En el segundo trimestre de 2026, la ___ de paro se situó por debajo del 10 %.",
+   sol:["tasa"],regle:"<b>la tasa de paro</b> (= <i>la tasa de desempleo</i>) : le taux de chômage. Donnée à retenir : <b>9,87 %</b> au deuxième trimestre 2026 (EPA, INE, 28/07/2026), soit <b>2,49 millions</b> de chômeurs. Ne pas confondre <i>el paro</i> (le chômage) et <i>la parada</i> (l'arrêt, la station).",
+   anki:{r:"le taux de chômage",v:"la tasa de paro / de desempleo — 9,87 % en España (EPA, 2º trimestre de 2026)",t:"LEX"}},
+  {id:"s3c3",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"LEX",
+   consigne:"Un seul verbe espagnol (à l'infinitif).",prompt:"« renchérir », « devenir plus cher » se dit : ___",
+   sol:["encarecerse","encarecer"],regle:"<b>encarecerse</b> : <i>los carburantes se han encarecido un 15,7 % en un año</i>. Le nom correspondant est <b>el encarecimiento</b>. À préférer au trop générique <i>subir</i> quand on parle de prix.",
+   anki:{r:"renchérir / le renchérissement",v:"encarecerse / el encarecimiento",t:"LEX"}},
+  {id:"s3c4",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"SYN",
+   consigne:"Complète par la préposition qui convient (un seul mot).",prompt:"Todo depende ___ la evolución de los precios de la energía.",
+   sol:["de"],regle:"<b>depender DE algo</b> — jamais <s>depender a</s>. Même série que <i>quejarse de</i>, revu le 11/08."},
+  {id:"s3c5",etape:"TRAVAIL CIBLÉ",type:"saisie",code:"GRAM",
+   consigne:"Conjugue au temps et au mode qui conviennent.",prompt:"Es probable que el Banco Central Europeo ___ (mantener) los tipos de interés.",
+   sol:["mantenga"],regle:"<b>Es probable que</b> exprime la probabilité, non la certitude → <b>subjonctif</b>. <i>mantener</i> suit <i>tener</i> : <b>mantengo → mantenga</b>. Lexique : <i>los tipos de interés</i> = les taux d'intérêt (jamais <s>las tasas de interés</s> en espagnol d'Espagne)."},
+
+  {id:"s3t1",etape:"APPLICATION CONCOURS",type:"theme",code:"LEX",
+   consigne:"Thème — traduis en espagnol.",prompt:"En juillet 2026, l'inflation espagnole est montée à 3,6 %, son taux le plus élevé depuis deux ans.",
+   sol:"En julio de 2026, la inflación española subió al 3,6 %, su tasa más alta en dos años.",
+   regle:"<b>en julio DE 2026</b> ; <b>subir AL</b> + pourcentage ; le superlatif se construit avec <b>en</b> et non <s>desde</s> : <i>su tasa más alta <b>en</b> dos años</i>. Indefinido <i>subió</i> : le mois est clos."},
+  {id:"s3t2",etape:"APPLICATION CONCOURS",type:"theme",code:"GRAM",
+   consigne:"Thème — traduis en espagnol.",prompt:"Les salaires n'ont pas suivi le rythme des prix, si bien que les ménages ont perdu du pouvoir d'achat.",
+   sol:"Los salarios no han seguido el ritmo de los precios, de modo que los hogares han perdido poder adquisitivo.",
+   regle:"« les ménages » → <b>los hogares</b> (ou <i>las familias</i>) — jamais <s>los hogareños</s>. « si bien que » (conséquence réelle) → <b>de modo que / de manera que + indicatif</b> ; avec le subjonctif, la même tournure exprimerait un but. Pas d'article partitif en espagnol : <i>han perdido poder adquisitivo</i>."},
+  {id:"s3t3",etape:"APPLICATION CONCOURS",type:"libre",code:"METH",
+   consigne:"Production libre — 4 à 5 phrases, environ 60 mots. Emploie au moins deux mots vus aujourd'hui.",
+   prompt:"¿Por qué la subida de los precios de la energía se ha convertido en un problema social en España?",
+   sol:"La subida de los precios de la energía se ha convertido en un problema social porque afecta directamente al presupuesto de los hogares más modestos. En julio de 2026, la inflación española subió al 3,6 %, impulsada sobre todo por los carburantes y la electricidad. Como los salarios no han seguido el mismo ritmo, muchas familias han perdido poder adquisitivo. Por eso la energía se ha vuelto un asunto político y no solo económico.",
+   regle:"Modèle de niveau concours : une réponse <b>directe</b>, un <b>chiffre daté et sourcé</b>, une conséquence sociale, une conclusion. Phrases courtes et sûres, connecteurs explicites (<i>porque, como, por eso</i>). Aucune tournure risquée : c'est ce que récompensent les rapports ELVi."}
+ ]
+}
+];
+
+/* ---------- persistance ---------- */
+const KEY="espagnol_lvb_ecg2_v1";
+let STORE_OK=true;
+function load(){
+  try{const r=localStorage.getItem(KEY);return r?JSON.parse(r):null;}
+  catch(e){STORE_OK=false;return null;}
+}
+function save(){
+  try{localStorage.setItem(KEY,JSON.stringify(S));}
+  catch(e){STORE_OK=false;renderStorageWarning();}
+}
+let S=load()||{seances:{},anki:{},erreurs:[],lectures:[]};
+SEANCES.forEach(s=>{ if(!S.seances[s.id]) S.seances[s.id]={answers:{},validated:false,startedAt:null,finishedAt:null}; });
+
+/* ---------- utilitaires ---------- */
+const TODAY=(function(){const d=new Date();
+  const p=n=>String(n).padStart(2,"0");
+  return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());})();
+function norm(t){return (t||"").toLowerCase().trim().replace(/\s+/g," ").replace(/[.,;:!?¿¡"']/g,"");}
+function noAcc(t){return norm(t).normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
+function nb(id){const st=S.seances[id];return Object.keys(st.answers).length;}
+function total(id){return SEANCES.find(s=>s.id===id).ex.length;}
+function done(id,ex){const a=S.seances[id].answers[ex.id];if(!a)return false;
+  if(a.needCorrectif&&!a.correctifDone)return false;
+  if((ex.type==="theme"||ex.type==="libre")&&!a.selfEval)return false;
+  return true;}
+function nbDone(id){const s=SEANCES.find(x=>x.id===id);return s.ex.filter(e=>done(id,e)).length;}
+function statut(s){
+  const st=S.seances[s.id];
+  if(st.validated) return {ic:"✅",txt:"FAITE",cls:"ok"};
+  const n=nbDone(s.id);
+  if(n>0) return {ic:"🟠",txt:"EN COURS — "+n+"/"+s.ex.length,cls:"warn"};
+  if(s.date<TODAY) return {ic:"🔴",txt:"NON FAITE",cls:"ko"};
+  return {ic:"⚪",txt:"NON COMMENCÉE",cls:""};
+}
+function addErreur(s,ex,val){
+  S.erreurs.push({date:TODAY,seance:s.num,code:ex.code,qid:ex.id,
+    original:val,correction:(ex.type==="qcm"?ex.options[ex.sol]:(Array.isArray(ex.sol)?ex.sol[0]:ex.sol)),
+    regle:ex.regle,prompt:ex.prompt});
+}
+function erreursGroupees(){
+  const g={};
+  S.erreurs.forEach(e=>{const k=e.qid;g[k]=g[k]||{...e,n:0};g[k].n++;});
+  const byCode={};
+  Object.values(g).forEach(e=>{byCode[e.code]=byCode[e.code]||[];byCode[e.code].push(e);});
+  return byCode;
+}
+function allAnki(){
+  const out=[];
+  SEANCES.forEach(s=>s.ex.forEach(e=>{if(e.anki)out.push({id:e.id,...e.anki,seance:s.num});}));
+  return out;
+}
+
+/* ---------- navigation ---------- */
+let VIEW="today", CUR=null;
+const TABS=[["today","AUJOURD'HUI"],["hist","MES SÉANCES"],["err","MES ERREURS"],["anki","ANKI"],["prog","MA PROGRESSION"]];
+function nav(){
+  document.getElementById("nav").innerHTML=TABS.map(t=>
+    `<button class="${VIEW===t[0]?'on':''}" onclick="go('${t[0]}')">${t[1]}</button>`).join("");
+}
+function go(v){VIEW=v;CUR=null;render();window.scrollTo(0,0);}
+function openSeance(id){CUR=id;VIEW="seance";
+  if(!S.seances[id].startedAt){S.seances[id].startedAt=new Date().toISOString();save();}
+  render();window.scrollTo(0,0);}
+
+/* ---------- rendu ---------- */
+function render(){nav();
+  const m=document.getElementById("main");
+  m.innerHTML = VIEW==="today"?vToday():VIEW==="hist"?vHist():VIEW==="err"?vErr():
+                VIEW==="anki"?vAnki():VIEW==="prog"?vProg():vSeance();
+  renderStorageWarning();
+}
+function renderStorageWarning(){
+  if(STORE_OK)return;
+  const m=document.getElementById("main");
+  if(m.querySelector(".stwarn"))return;
+  const d=document.createElement("div");
+  d.className="fb warn stwarn";
+  d.innerHTML="⚠️ <b>Sauvegarde automatique indisponible dans ce contexte.</b> Tes réponses ne survivront pas à un rechargement de la page. Ouvre le fichier <code>app.html</code> téléchargé directement dans ton navigateur pour activer la sauvegarde.";
+  m.prepend(d);
+}
+
+function vToday(){
+  const s=SEANCES.find(x=>x.date===TODAY)||SEANCES[SEANCES.length-1];
+  const st=statut(s), n=nbDone(s.id);
+  const retard=SEANCES.filter(x=>x.date<TODAY&&x.id!==s.id&&!S.seances[x.id].validated);
+  return `
+  <h2>Aujourd'hui</h2>
+  <div class="card">
+    <div class="meta">${s.jour} · séance n°${s.num} · <b>20 minutes</b></div>
+    <h3 style="margin-top:8px">${s.titre}</h3>
+    <div class="meta">${s.themes}</div>
+    <div class="bar"><i style="width:${Math.round(n/s.ex.length*100)}%"></i></div>
+    <div class="row">
+      <div><b>${st.ic} ${st.txt}</b> <span class="meta">· ${s.ex.length} exercices</span></div>
+      <button class="btn" onclick="openSeance('${s.id}')">${n===0?"COMMENCER MA SÉANCE":(S.seances[s.id].validated?"REVOIR MA SÉANCE":"REPRENDRE MA SÉANCE")}</button>
+    </div>
+  </div>
+  ${retard.length?`<h2>À rattraper</h2>${retard.map(x=>{const t=statut(x);return `
+  <div class="card tight"><div class="row">
+    <div><b>${t.ic} ${x.jour}</b><div class="meta">${x.titre}</div></div>
+    <button class="btn ghost small" onclick="openSeance('${x.id}')">Rattraper</button>
+  </div></div>`}).join("")}
+  <div class="note">Une séance non faite n'est jamais supprimée ni remplacée : elle reste disponible et ses résultats seront intégrés à la suite du programme.</div>`:""}
+  <h2>Comment fonctionne cette application</h2>
+  <div class="card small">
+    <p style="margin-top:0">Toutes les questions sont <b>obligatoires</b>. Impossible d'en sauter une : si tu ne sais pas, clique sur <i>Je ne sais pas</i> — cela compte comme une tentative et identifie une lacune.</p>
+    <p>Il n'existe <b>aucun bouton « tout corriger »</b> : la correction n'apparaît qu'après ta réponse, question par question. Toute réponse fausse déclenche une <b>question corrective obligatoire</b>.</p>
+    <p style="margin-bottom:0">Le bouton <b>✅ SÉANCE FAITE</b> reste verrouillé tant que les ${s.ex.length} exercices ne sont pas traités. Générer une séance ≠ l'avoir faite.</p>
+  </div>`;
+}
+
+function vHist(){
+  return `<h2>Mes séances</h2>
+  <div class="card"><ul class="hist">${SEANCES.slice().reverse().map(s=>{
+    const t=statut(s);
+    return `<li onclick="openSeance('${s.id}')"><div class="row">
+      <div><b>${s.jour.replace(/ 2026/,"")}</b> — <span class="meta">${s.titre}</span></div>
+      <div>${t.ic} <span class="meta">${t.txt}</span></div></div></li>`;}).join("")}
+  </ul></div>
+  <div class="note">Chaque séance reste consultable : tes réponses, les corrections, les règles et les cartes Anki créées ce jour-là sont conservées. Les séances passées sont du matériel de révision.</div>`;
+}
+
+function vErr(){
+  const g=erreursGroupees();
+  const codes=Object.keys(g);
+  const recur=[];Object.values(g).forEach(a=>a.forEach(e=>{if(e.n>1)recur.push(e)}));
+  if(!codes.length) return `<h2>Mes erreurs</h2>
+    <div class="card"><p style="margin:0">Aucune erreur enregistrée pour l'instant.</p>
+    <p class="meta" style="margin-bottom:0">Ce carnet se remplit <b>tout seul</b> à partir de tes réponses fausses. Il ne contient rien tant que tu n'as pas travaillé : c'est normal, et c'est voulu — il ne doit refléter que des erreurs réelles.</p></div>
+    <div class="note">Codes utilisés : GRAM grammaire · CONJ conjugaison · LEX vocabulaire · SYN syntaxe · IDIO formulation · ACC accent · ORTH orthographe · CIV civilisation · METH méthode.</div>`;
+  return `<h2>Mes erreurs</h2>
+  ${recur.length?`<div class="fb ko"><b>⚠️ ERREUR RÉCURRENTE</b> — ${recur.length} point(s) manqué(s) plusieurs fois. À réactiver en priorité :<ul style="margin:6px 0 0">${recur.map(e=>`<li>${e.correction} <span class="tag">${e.code}</span></li>`).join("")}</ul></div>`:""}
+  ${codes.map(c=>`<div class="card"><h3><span class="tag">${c}</span> ${g[c].length} point(s)</h3>
+    <table><tr><th>Question</th><th>Ta réponse</th><th>Correction</th><th>×</th></tr>
+    ${g[c].map(e=>`<tr><td>${e.prompt}</td><td style="color:var(--ko)">${e.original||"—"}</td>
+      <td><b>${e.correction}</b></td><td>${e.n}</td></tr>`).join("")}</table></div>`).join("")}`;
+}
+
+function vAnki(){
+  const cards=allAnki();
+  const tsv=cards.map(c=>`${c.r}\t${c.v}\t${c.t}`).join("\n");
+  return `<h2>Anki</h2>
+  <div class="card"><div class="row"><div><b>${cards.length} cartes</b><div class="meta">issues de tes séances — recto FR/consigne, verso ES</div></div>
+    <button class="btn small" onclick="dl('anki-espagnol-ecg2.tsv',document.getElementById('tsv').value)">Exporter en TSV</button></div></div>
+  ${cards.map(c=>`<div class="card tight"><div class="row"><div><b>${c.r}</b><div class="meta es">${c.v}</div></div>
+    <div><span class="tag">${c.t}</span><span class="meta">S${c.seance}</span></div></div></div>`).join("")}
+  <textarea id="tsv" class="hide">${tsv}</textarea>
+  <div class="note">Format d'import Anki : <code>Recto | Verso | Tag</code>, séparateur tabulation.</div>`;
+}
+
+function vProg(){
+  const faites=SEANCES.filter(s=>S.seances[s.id].validated).length;
+  const gen=SEANCES.length;
+  let just=0,tot=0;
+  SEANCES.forEach(s=>s.ex.forEach(e=>{const a=S.seances[s.id].answers[e.id];
+    if(!a)return; tot++;
+    if(e.type==="theme"||e.type==="libre"){if(a.selfEval==="juste")just++;}
+    else if(a.ok)just++;}));
+  return `<h2>Ma progression</h2>
+  <div class="card">
+    <table>
+      <tr><td>Séances générées</td><td><b>${gen}</b></td></tr>
+      <tr><td>Séances validées ✅</td><td><b>${faites}</b></td></tr>
+      <tr><td>Exercices traités</td><td><b>${tot}</b></td></tr>
+      <tr><td>Réussite (auto-évaluation incluse)</td><td><b>${tot?Math.round(just/tot*100):0}%</b> (${just}/${tot})</td></tr>
+      <tr><td>Erreurs au carnet</td><td><b>${S.erreurs.length}</b></td></tr>
+    </table>
+  </div>
+  <div class="card"><h3>Mes données</h3>
+  <p class="meta">Sauvegarde ${STORE_OK?"active dans ce navigateur":"<b>indisponible</b>"}. Exporte régulièrement ta progression : le fichier obtenu se recharge dans une version ultérieure de l'application.</p>
+  <button class="btn small" onclick="dl('progression-espagnol.json',JSON.stringify(S))">Exporter ma progression</button>
+  <button class="btn ghost small" onclick="document.getElementById('imp').classList.toggle('hide')">Importer</button>
+  <div id="imp" class="hide" style="margin-top:10px">
+    <textarea id="impt" placeholder="Colle ici le contenu du fichier progression-espagnol.json"></textarea>
+    <button class="btn small" style="margin-top:6px" onclick="imp()">Charger</button>
+  </div></div>
+  <div class="note">La statistique ne remplace pas l'apprentissage : elle sert seulement à repérer ce qu'il faut réactiver.</div>`;
+}
+
+function dl(name,txt){
+  const b=new Blob([txt],{type:"text/plain;charset=utf-8"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click();
+}
+function imp(){
+  try{S=JSON.parse(document.getElementById("impt").value);
+    SEANCES.forEach(s=>{if(!S.seances[s.id])S.seances[s.id]={answers:{},validated:false,startedAt:null,finishedAt:null};});
+    save();render();}catch(e){alert("Fichier illisible.");}
+}
+
+/* ---------- vue séance ---------- */
+function vSeance(){
+  const s=SEANCES.find(x=>x.id===CUR), st=S.seances[CUR];
+  const n=nbDone(CUR), N=s.ex.length;
+  const idx=s.ex.findIndex(e=>!done(CUR,e));
+  let h=`<h2>Séance n°${s.num}</h2>
+  <div class="card">
+    <div class="row"><div><b>${s.jour}</b><div class="meta">${s.titre} · 20 minutes</div></div>
+    <button class="btn ghost small" onclick="go('today')">← Accueil</button></div>
+    <div class="bar"><i style="width:${Math.round(n/N*100)}%"></i></div>
+    <div class="meta">Progression ${n}/${N}${st.validated?" · ✅ SÉANCE FAITE":""}</div>
+  </div>`;
+  let etape="";
+  s.ex.forEach((e,i)=>{
+    const visible = st.validated || i<=idx || idx===-1;
+    if(!visible) return;
+    if(e.etape!==etape){etape=e.etape;h+=`<h2>${etape}</h2>`;}
+    h+=exHtml(s,e,i);
+  });
+  if(idx===-1){
+    h+=`<div class="card"><h3>${N} / ${N} exercices traités</h3>`;
+    if(st.validated){
+      h+=`<div class="fb ok"><b>✅ SÉANCE FAITE</b> — validée le ${st.finishedAt?st.finishedAt.slice(0,10):TODAY}.</div>`;
+    }else{
+      h+=`<p class="meta">Toutes les questions ont reçu une réponse et toutes les corrections ont été consultées.</p>
+      <button class="btn" onclick="valider('${s.id}')">✅ SÉANCE FAITE</button>`;
+    }
+    h+=`</div>`+bilan(s)+immersion(s);
+  }else{
+    h+=`<div class="card tight"><button class="btn" disabled>✅ SÉANCE FAITE</button>
+      <div class="fb ko" style="margin-top:8px">🔒 <b>SÉANCE NON TERMINÉE</b> — il reste ${N-n} exercice(s) à traiter avant de pouvoir valider.</div></div>`;
+  }
+  return h;
+}
+
+function exHtml(s,e,i){
+  const a=S.seances[s.id].answers[e.id];
+  let h=`<div class="card"><div class="meta">Question ${i+1} <span class="tag" style="margin-left:6px">${e.code}</span></div>
+    <p style="margin:6px 0 4px"><b>${e.consigne}</b></p>
+    <p class="es" style="margin:0 0 10px;font-size:17px">${e.prompt}</p>`;
+
+  if(!a){ /* pas encore répondu */
+    if(e.type==="qcm"){
+      h+=e.options.map((o,k)=>`<label class="opt"><input type="radio" name="q${e.id}" value="${k}"> ${o}</label>`).join("");
+      h+=`<button class="btn small" style="margin-top:8px" onclick="rep('${s.id}','${e.id}')">VALIDER</button>`;
+    }else if(e.type==="theme"||e.type==="libre"){
+      h+=`<textarea id="in_${e.id}" placeholder="Écris ta traduction / ton texte…"></textarea>
+        <div style="margin-top:8px"><button class="btn small" onclick="rep('${s.id}','${e.id}')">VALIDER</button>
+        <button class="btn ghost small" onclick="idk('${s.id}','${e.id}')">Je ne sais pas</button></div>`;
+    }else{
+      h+=`<input type="text" id="in_${e.id}" autocomplete="off" placeholder="Ta réponse…"
+        onkeydown="if(event.key==='Enter')rep('${s.id}','${e.id}')">
+        <div style="margin-top:8px"><button class="btn small" onclick="rep('${s.id}','${e.id}')">VALIDER</button>
+        <button class="btn ghost small" onclick="idk('${s.id}','${e.id}')">Je ne sais pas</button></div>`;
+    }
+    h+=`<div class="kbd" style="margin-top:8px">Réponse obligatoire — impossible de passer à la suite sans avoir tenté.</div>`;
+    return h+`</div>`;
+  }
+
+  /* déjà répondu : on montre la réponse + la correction */
+  h+=`<div class="meta">Ta réponse :</div><p style="margin:2px 0 0" class="es">${a.value||"<i>(vide)</i>"}</p>`;
+  if(e.type==="theme"||e.type==="libre"){
+    h+=`<div class="fb ${a.selfEval==="juste"?"ok":a.selfEval==="revoir"?"ko":"warn"}">
+      <div class="meta">${e.type==="libre"?"Modèle de niveau concours":"Corrigé"}</div>
+      <p class="es" style="margin:4px 0 8px">${e.sol}</p>${e.regle}</div>`;
+    if(!a.selfEval){
+      h+=`<p class="meta" style="margin-bottom:4px">Compare honnêtement — l'auto-évaluation alimente ton carnet d'erreurs :</p>
+      <button class="btn small" onclick="self('${s.id}','${e.id}','juste')">C'était juste</button>
+      <button class="btn ghost small" onclick="self('${s.id}','${e.id}','presque')">Presque</button>
+      <button class="btn ghost small" onclick="self('${s.id}','${e.id}','revoir')">À revoir</button>`;
+    }else{
+      h+=`<div class="meta">Auto-évaluation : <b>${a.selfEval}</b></div>`;
+    }
+  }else{
+    if(a.ok){
+      h+=`<div class="fb ok"><b>✅ CORRECT</b><br>${e.regle}</div>`;
+    }else if(a.acc){
+      h+=`<div class="fb warn"><b>⚠️ ACC — accent manquant ou fautif</b><br>Correction : <b class="es">${sol1(e)}</b><br>${e.regle}
+      <br><span class="meta">Au concours, un accent manquant est une faute. Compté comme incorrect.</span></div>`;
+    }else{
+      h+=`<div class="fb ko"><b>❌ À REVOIR</b><br>Correction : <b class="es">${e.type==="qcm"?e.options[e.sol]:sol1(e)}</b><br>${e.regle}</div>`;
+    }
+    if(a.needCorrectif&&!a.correctifDone){
+      h+=`<div style="margin-top:10px"><p class="meta" style="margin-bottom:4px">
+        <b>Question corrective obligatoire</b> — écris toi-même la forme correcte pour débloquer la suite :</p>
+        <input type="text" id="corr_${e.id}" autocomplete="off"
+          onkeydown="if(event.key==='Enter')corr('${s.id}','${e.id}')">
+        <button class="btn small" style="margin-top:6px" onclick="corr('${s.id}','${e.id}')">VALIDER</button></div>`;
+    }else if(a.needCorrectif){
+      h+=`<div class="meta" style="margin-top:8px">✔ Forme correcte réécrite.</div>`;
+    }
+  }
+  return h+`</div>`;
+}
+function sol1(e){return Array.isArray(e.sol)?e.sol[0]:e.sol;}
+
+function rep(sid,eid){
+  const s=SEANCES.find(x=>x.id===sid), e=s.ex.find(x=>x.id===eid);
+  let val, ok=null, acc=false;
+  if(e.type==="qcm"){
+    const c=document.querySelector(`input[name=q${eid}]:checked`);
+    if(!c){alert("Choisis une réponse. Aucune question ne peut être sautée.");return;}
+    val=e.options[+c.value];
+    ok=(+c.value===e.sol); acc=false;
+  }else{
+    val=document.getElementById("in_"+eid).value;
+    if(!norm(val)){alert("Réponse obligatoire. Si tu ne sais pas, clique sur « Je ne sais pas ».");return;}
+    if(e.type==="theme"||e.type==="libre"){ok=null;acc=false;}
+    else{
+      const sols=e.sol.map(norm);
+      ok=sols.includes(norm(val));
+      acc=!ok&&e.sol.map(noAcc).includes(noAcc(val));
+    }
+  }
+  S.seances[sid].answers[eid]={value:val,ok:ok===true,acc:acc,
+    needCorrectif:(ok===false||acc===true),correctifDone:false,selfEval:null,at:new Date().toISOString()};
+  if(ok===false||acc===true) addErreur(s,e,val);
+  save();render();
+}
+function idk(sid,eid){
+  const s=SEANCES.find(x=>x.id===sid), e=s.ex.find(x=>x.id===eid);
+  S.seances[sid].answers[eid]={value:"JE NE SAIS PAS",ok:false,acc:false,
+    needCorrectif:(e.type!=="theme"&&e.type!=="libre"),correctifDone:false,selfEval:null,at:new Date().toISOString()};
+  addErreur(s,e,"JE NE SAIS PAS");
+  save();render();
+}
+function corr(sid,eid){
+  const e=SEANCES.find(x=>x.id===sid).ex.find(x=>x.id===eid);
+  const v=document.getElementById("corr_"+eid).value;
+  const good = e.type==="qcm" ? norm(v)===norm(e.options[e.sol]) : e.sol.map(norm).includes(norm(v));
+  if(!good){alert("Ce n'est pas encore la forme exacte (accents compris). Recopie-la précisément : c'est ce geste qui fixe la correction.");return;}
+  S.seances[sid].answers[eid].correctifDone=true;save();render();
+}
+function self(sid,eid,v){
+  const s=SEANCES.find(x=>x.id===sid), e=s.ex.find(x=>x.id===eid);
+  S.seances[sid].answers[eid].selfEval=v;
+  if(v!=="juste") addErreur(s,e,S.seances[sid].answers[eid].value);
+  save();render();
+}
+function valider(sid){
+  const s=SEANCES.find(x=>x.id===sid);
+  if(s.ex.some(e=>!done(sid,e))){alert("🔒 SÉANCE NON TERMINÉE.");return;}
+  S.seances[sid].validated=true;S.seances[sid].finishedAt=new Date().toISOString();
+  save();render();
+}
+
+function bilan(s){
+  const wrong=s.ex.filter(e=>{const a=S.seances[s.id].answers[e.id];
+    if(!a)return false;
+    if(e.type==="theme"||e.type==="libre")return a.selfEval&&a.selfEval!=="juste";
+    return a.ok===false||a.acc===true;});
+  const codes=[...new Set(wrong.map(e=>e.code))];
+  const retenir = s.retenir ? s.retenir : (s.id==="s1"
+    ? ["<b>haber</b> impersonnel toujours au singulier : <i>hay, hubo, había</i>.",
+       "Conditionnel dans la principale → <b>imparfait du subjonctif</b> dans la subordonnée.",
+       "« devenir » → <b>convertirse en</b> ; « quitter le domicile familial » → <b>independizarse</b>."]
+    : ["Radicaux d'indefinido en <b>-j</b> : <i>dijeron, trajeron, redujeron</i> — jamais de <i>-i-</i>.",
+       "Après <b>si</b> hypothétique : imparfait du subjonctif, jamais de conditionnel.",
+       "<b>desde hace + durée</b> se construit avec un <b>présent</b> en espagnol."]);
+  return `<div class="card">
+    <h3>À retenir aujourd'hui</h3><ul>${retenir.map(x=>`<li>${x}</li>`).join("")}</ul>
+    <h3>Erreurs à réactiver</h3>
+    ${wrong.length?`<ul>${wrong.slice(0,3).map(e=>`<li><span class="tag">${e.code}</span> ${sol1(e)}</li>`).join("")}</ul>
+      <p class="meta">Ces points reviendront dans les prochaines séances (J+2, J+7, J+15). Codes concernés : ${codes.join(" · ")}.</p>`
+     :`<p class="meta">Aucune erreur sur cette séance. Les notions seront tout de même réactivées une fois avant d'être considérées comme acquises.</p>`}
+    <h3>Cartes Anki de la séance</h3>
+    <ul>${s.ex.filter(e=>e.anki).map(e=>`<li><b>${e.anki.r}</b> → <span class="es">${e.anki.v}</span> <span class="tag">${e.anki.t}</span></li>`).join("")}</ul>
+  </div>`;
+}
+
+function immersion(s){
+  const i=s.immersion;
+  return `<div class="card">
+    <h3>${i.type} — 10 MINUTES D'ESPAGNOL RÉEL · ${i.pays}</h3>
+    <p class="meta">Activité recommandée, hors des 20 minutes obligatoires : elle ne conditionne pas le statut « séance faite ».</p>
+    <p><b>Sujet</b><br>${i.sujet}</p>
+    <p><b>Pourquoi c'est utile</b><br>${i.pourquoi}</p>
+    <p><b>3 mots à repérer</b></p><ul>${i.mots.map(m=>`<li class="es">${m}</li>`).join("")}</ul>
+    <p><b>Question de compréhension</b> — réponds en espagnol, en 2 ou 3 phrases :<br>
+    <span class="es">${i.question}</span></p>
+    <p><a href="${i.url}" target="_blank" rel="noopener">Ouvrir l'article ↗</a><br>
+    <span class="meta">${i.source}</span></p>
+    <p class="meta">Renvoie-moi ta réponse dans la conversation : j'en tirerai 2 ou 3 expressions et des cartes Anki, réutilisées quelques jours plus tard.</p>
+  </div>`;
+}
+
+render();
+</script>
+</body>
+</html>
